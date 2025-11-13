@@ -207,7 +207,7 @@ fun SafetyTimerWidget(
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         onClick = {
-            view.performHapticFeedback(HapticFeedbackConstants.CLICK)
+            view.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
             if (isActive) onCancel() else onStart()
         }
     ) {

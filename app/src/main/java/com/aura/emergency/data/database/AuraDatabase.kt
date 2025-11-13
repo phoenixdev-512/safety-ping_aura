@@ -6,8 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.aura.emergency.data.dao.*
 import com.aura.emergency.data.model.*
-import net.sqlcipher.database.SQLiteDatabase
-import net.sqlcipher.database.SupportFactory
+// TODO: Re-enable SQLCipher encryption
+// import net.sqlcipher.database.SQLiteDatabase
+// import net.sqlcipher.database.SupportFactory
 
 @Database(
     entities = [
@@ -39,19 +40,23 @@ abstract class AuraDatabase : RoomDatabase() {
         }
         
         private fun buildDatabase(context: Context, passphrase: String): AuraDatabase {
+            // TODO: Re-enable SQLCipher encryption
+            // Temporarily disabled for build - will add back encryption
+            /* 
             // Initialize SQLCipher
             System.loadLibrary("sqlcipher")
             
             // Create passphrase for encryption
             val passphraseBytes = SQLiteDatabase.getBytes(passphrase.toCharArray())
             val factory = SupportFactory(passphraseBytes)
+            */
             
             return Room.databaseBuilder(
                 context.applicationContext,
                 AuraDatabase::class.java,
                 "aura_database.db"
             )
-                .openHelperFactory(factory)
+                // .openHelperFactory(factory)  // TODO: Re-enable with SQLCipher
                 .fallbackToDestructiveMigration()
                 .build()
         }
