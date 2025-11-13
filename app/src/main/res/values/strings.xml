@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Aura</string>
+    
+    <!-- Accessibility -->
+    <string name="accessibility_service_description">Aura uses accessibility service to detect emergency triggers like power button presses. This helps you send emergency alerts quickly when you need help. No personal data is accessed or stored.</string>
+    
+    <!-- Onboarding -->
+    <string name="welcome_title">Welcome to Aura</string>
+    <string name="welcome_subtitle">Your safety, your data, your control.</string>
+    <string name="get_started">Get Started</string>
+    
+    <!-- Dashboard -->
+    <string name="status_safe">Status: SAFE</string>
+    <string name="status_safe_at_home">Status: SAFE at Home</string>
+    <string name="start_safety_timer">START\nSAFETY\nTIMER</string>
+    <string name="hold_for_help">HOLD FOR HELP</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_contacts">Contacts</string>
+    <string name="nav_checkin">Check-in</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Contacts -->
+    <string name="trusted_circle">Trusted Circle</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="encrypted_badge">Encrypted</string>
+    <string name="sms_only_badge">SMS Only</string>
+    
+    <!-- Alerts -->
+    <string name="emergency_title">EMERGENCY!</string>
+    <string name="needs_help">%s NEEDS HELP!</string>
+    <string name="call_sender">CALL %s</string>
+    <string name="call_emergency">CALL 911 / 112</string>
+    <string name="im_responding">I\'M RESPONDING</string>
+    <string name="mute">MUTE</string>
+    <string name="info">INFO</string>
+    
+    <!-- Permissions -->
+    <string name="permission_sms_rationale">Aura needs SMS permission to send emergency alerts to your trusted contacts without internet.</string>
+    <string name="permission_location_rationale">Aura needs location permission to share your GPS coordinates during emergencies.</string>
+    <string name="permission_notification_rationale">Aura needs notification permission to alert you and your contacts during emergencies.</string>
+</resources>
