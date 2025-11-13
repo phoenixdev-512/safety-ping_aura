@@ -13,8 +13,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
 import com.aura.emergency.ui.dashboard.DashboardScreen
 import com.aura.emergency.ui.dashboard.DashboardViewModel
+import com.aura.emergency.ui.navigation.AuraNavGraph
+import com.aura.emergency.ui.navigation.Screen
 import com.aura.emergency.ui.theme.AuraTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,16 +35,6 @@ class MainActivity : ComponentActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
-        // Check if first time launch
-        val prefs = getSharedPreferences("aura_prefs", MODE_PRIVATE)
-        val isFirstLaunch = !prefs.getBoolean("onboarding_completed", false)
-        
-        if (isFirstLaunch) {
-            // TODO: Navigate to onboarding
-            // For now, set as completed to show dashboard
-            prefs.edit().putBoolean("onboarding_completed", true).apply()
-        }
         
         // Request essential permissions
         requestEssentialPermissions()
@@ -93,6 +86,18 @@ class MainActivity : ComponentActivity() {
 fun AuraApp() {
     val application = androidx.compose.ui.platform.LocalContext.current.applicationContext as AuraApplication
     val database = application.database
+    val context = androidx.compose.ui.platform.LocalContext.current
+    
+    // Check if onboarding is complete
+    val prefs = context.getSharedPreferences("aura_prefs", android.content.Context.MODE_PRIVATE)
+    val isOnboardingComplete = prefs.getBoolean("onboarding_completed", false)
+    
+    // Determine start destination
+    val startDestination = if (isOnboardingComplete) {
+        Screen.Dashboard.route
+    } else {
+        Screen.Welcome.route
+    }
     
     val dashboardViewModel: DashboardViewModel = viewModel(
         factory = object : androidx.lifecycle.ViewModelProvider.Factory {
@@ -107,9 +112,12 @@ fun AuraApp() {
     )
     
     val uiState by dashboardViewModel.uiState.collectAsState()
+    val navController = rememberNavController()
     
-    DashboardScreen(
-        uiState = uiState,
+    AuraNavGraph(
+        navController = navController,
+        startDestination = startDestination,
+        dashboardUiState = uiState,
         onStartTimer = {
             // TODO: Show timer dialog
         },
@@ -118,15 +126,6 @@ fun AuraApp() {
         },
         onPanicButtonTriggered = {
             // TODO: Trigger emergency alert
-        },
-        onNavigateToContacts = {
-            // TODO: Navigate to contacts screen
-        },
-        onNavigateToCheckin = {
-            // TODO: Navigate to check-in screen
-        },
-        onNavigateToSettings = {
-            // TODO: Navigate to settings screen
         }
     )
 }
