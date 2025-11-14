@@ -17,7 +17,8 @@ Aura is a serverless, privacy-focused emergency alert system designed for Androi
 7. [Security](#security)
 8. [Development](#development)
 9. [Project Status](#project-status)
-10. [License](#license)
+10. [Documentation](#documentation)
+11. [License](#license)
 
 ---
 
@@ -485,7 +486,9 @@ Note: Configure signing key in `app/build.gradle.kts` before release build.
 
 ## License
 
-This project is developed according to the Aura App Functional Specification.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+The project is developed according to the Aura App Functional Specification with a focus on privacy, security, and user safety.
 
 ---
 
@@ -494,6 +497,13 @@ This project is developed according to the Aura App Functional Specification.
 Comprehensive documentation is available in the `docs/` directory:
 
 ### For Users
+
+- **[Quick Start Guide](docs/QUICKSTART.md)**: Get up and running in 5 minutes
+  - Installation instructions
+  - Initial setup steps
+  - Basic usage guide
+  - Testing your setup
+  - Quick reference
 
 - **[User Guide](docs/USER_GUIDE.md)**: Complete guide for installing, configuring, and using Aura
   - Initial setup and permissions
@@ -526,6 +536,16 @@ Comprehensive documentation is available in the `docs/` directory:
   - Required screenshots for documentation
   - Screenshot capture guidelines
   - Test data standards
+
+- **[Changelog](CHANGELOG.md)**: Version history and release notes
+  - All notable changes to the project
+  - Version history and release schedule
+
+- **[Security Policy](SECURITY.md)**: Security information and reporting
+  - Supported versions
+  - How to report vulnerabilities
+  - Security best practices
+  - Known security considerations
 
 ---
 
